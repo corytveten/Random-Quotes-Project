@@ -1,5 +1,5 @@
 //immediate invoked function expression
-(function() {
+
   const quotes = [
     {
       quote:
@@ -32,13 +32,16 @@
     }
   ];
 
-  const btn = document.getElementById("generate-btn");
+const button = document.getElementById("generate-btn");
+const quoteText = document.getElementById('quote');
+const author = document.getElementsByClassName('quote-author ml-3');
 
-  btn.addEventListener("click", function() {
-    let random = Math.floor(Math.random() * quotes.length);
-    console.log(random);
 
-    document.getElementById("quote").textContent = quotes[random].quote;
-    document.querySelector(".author").textContent = quotes[random].author;
-  });
-})();
+
+function getQuote() {
+  let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  quoteText.innerText = randomQuote.quote;
+  author[0].innerText = randomQuote.author;
+}
+
+button.addEventListener('click', getQuote)
